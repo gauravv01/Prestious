@@ -18,3 +18,12 @@
 .text div:nth-of-type(2){
     font-size: 1rem;
 }
+
+@media(max-width:445px){
+    .text{
+        font-size: 1rem;
+    }
+    .text div:nth-of-type(2){
+        font-size: 0.75rem;
+    }
+}

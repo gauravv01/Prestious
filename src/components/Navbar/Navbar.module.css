@@ -38,3 +38,18 @@
     background-color: #565353;
     color: white;
 }
+
+@media(max-width:520px){
+    .heading{
+        font-size: 1.5rem;
+    }
+}
+
+@media(max-width:445px){
+    .heading{
+        font-size: 1rem;
+    }
+    .button_parent button{
+        font-size: 0.75rem;
+    }
+}

@@ -61,3 +61,12 @@
 .parent_comp ul{
     list-style: none;
 }
+
+@media(max-width:680px){
+    .dropdown{
+        flex-direction: column;
+    }
+    .dropdown select{
+        margin-top: 1rem;
+    }
+}
