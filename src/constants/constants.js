@@ -18,6 +18,7 @@ const constants={
     // Head&Tail Page
     DROPDOWN:'DropDown:',
     OPTIONS:['select value','H','T'],
+    MESSAGE:'Please select value a dropdown !',
     SUBMIT:'Submit',
 
     // Pages

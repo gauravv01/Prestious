@@ -8,12 +8,51 @@ function createObj(value){
 
     return obj
 }
+function calEdge(collection,key){
+    let length;
+    let curr=collection[key];
+    if(curr)length=1;
+    while(curr.next!==null){
+        curr=curr.next;
+        length++;
+    }
+    return length;
+}
+
+function sameLeg(collection,value){
+    const length=calEdge(collection,0);
+    for(let key of collection){
+        let curr=key;
+       while(curr.next!==null){
+        // edge++;
+        curr=curr.next;
+       }
+       let keyLength=calEdge(collection,collection.indexOf(key))
+        if(curr.head!==value){
+            curr.next=createObj(value)
+               return}
+        else if(curr.head===value && keyLength!==length){
+            while(keyLength<length-1){
+                curr.next=createObj(null);
+                curr=curr.next;
+                keyLength++;
+            }
+            curr.next=createObj(value)
+            return
+        }
+       if(key===collection[collection.length-1] && keyLength===length){
+        const obj=  createObj(value)
+         collection.push(obj)
+        return}
+    }
+}
 
 const initialState={
     collection:[],
     temp:[],
     value:constants.OPTIONS[0],
-    not_value:true
+    not_value:true,
+    message:false
  }
 
 const DropDownSlice=createSlice({
@@ -24,23 +63,27 @@ const DropDownSlice=createSlice({
          const item=action.payload;
          state.value=item;
          if(state.value===constants.OPTIONS[0]){state.not_value=true}
-         else{state.not_value= false}
+         else{state.not_value= false;
+              state.message=false;        
+        }
         },
         assignValue(state){
-            if(state.not_value===true)return
+            if(state.not_value===true){
+                state.message=true;
+                return
+            }
             const length=state.temp.length;
-            if(!length || state.temp[length-1]===state.value){
-                    const obj=  createObj(state.value)
+            if(!length ){
+                const obj=  createObj(state.value)
                     state.collection.push(obj);
                     state.temp.push(state.value)
-            }else{
-                         let oldList=state.collection[state.collection.length-1];
-                         let curr=oldList
-                         while(curr.next!==null){
-                         curr=curr.next;}
-                         curr.next=createObj(state.value);
-                         state.temp.push(state.value)
             }
+            else{
+                sameLeg(state.collection,state.value);
+                state.temp.push(state.value)
+            }
+            state.value=constants.OPTIONS[0];
+            state.not_value=true;
     },
 }
 });

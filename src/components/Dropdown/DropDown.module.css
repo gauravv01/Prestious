@@ -7,6 +7,8 @@
     background-color: #f6f6f6;
     border-radius: 0.5rem;
     min-height: 10rem;
+    font-size: 1rem;
+
 }
 
 .btn_along{
@@ -38,6 +40,20 @@
     border: 1px solid gray;
     text-align: center;
 }
+.message_along{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.message_along div:nth-of-type(2){
+    text-align: center;
+}
+
+.message{
+    color: red;
+    font-size: 0.75rem;
+}
 
 .line{
     width: 1px;
@@ -51,6 +67,10 @@
     width: 5rem;
     border-radius: 0.5rem;
     color: rgb(75, 75, 75);
+}
+
+.span{
+    display: none;
 }
 
 .button:hover{
@@ -68,5 +88,8 @@
     }
     .dropdown select{
         margin-top: 1rem;
+    }
+    .message{
+        font-size: 0.6rem;
     }
 }
